@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Form, Container, Col, Row } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
+import CustomNav from "./components/Navbar";
+import ApiKeyForm from "./components/Inputs";
+import Response from "./components/ResponseArea";
+import { useState } from "react";
 
 function App() {
+  const [response, setResponse] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" data-bs-theme="dark">
+      <CustomNav></CustomNav>
+      <Container>
+        <Row>
+          <ApiKeyForm setResponseArea={setResponse}></ApiKeyForm>
+        </Row>
+
+        <Row>
+          <Response response={response}></Response>
+        </Row>
+      </Container>
     </div>
   );
 }
